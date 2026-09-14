@@ -487,7 +487,7 @@ class ODR_app(wx.Frame):
         self.SetTitle('ODR app')
         self.Centre()
         if system() == 'Linux':
-            self.SetSize((1020, 630)) #Tamaño de ventana
+            self.SetSize((1120, 730)) #Tamaño de ventana
             bundle = wx.IconBundle()
             bundle.AddIcon(resource_path('odr_app_logo256.png'), wx.BITMAP_TYPE_PNG)
             bundle.AddIcon(resource_path('odr_app_logo128.png'), wx.BITMAP_TYPE_PNG)
@@ -569,7 +569,7 @@ class ODR_app(wx.Frame):
         pnlResultados_sizer=wx.StaticBoxSizer(pnlResultados, wx.HORIZONTAL)
 
         #generamos la ventana de resultados
-        self.ResText = wx.TextCtrl(self.pnl, value='Sin resultados todavía', 
+        self.ResText = wx.TextCtrl(pnlResultados, value='Sin resultados todavía', 
                                    style=wx.TE_MULTILINE|wx.TE_READONLY|wx.HSCROLL, size=(290,120))
 
         #añadimos la ventana al sizer de resultados
@@ -581,16 +581,16 @@ class ODR_app(wx.Frame):
         pnlAjuste_sizer = wx.StaticBoxSizer(pnlAjuste, wx.HORIZONTAL)
 
         #generamos los elementos dentro del panel de configuración
-        TextFilas = wx.StaticText(self.pnl, label='# Filas')
+        TextFilas = wx.StaticText(pnlAjuste, label='# Filas')
         TextFilas.SetForegroundColour(wx.WHITE)
-        self.IntFilas = wx.SpinCtrl(self.pnl, style= wx.SP_ARROW_KEYS|wx.TE_PROCESS_ENTER|wx.ALIGN_CENTER_HORIZONTAL,
+        self.IntFilas = wx.SpinCtrl(pnlAjuste, style= wx.SP_ARROW_KEYS|wx.TE_PROCESS_ENTER|wx.ALIGN_CENTER_HORIZONTAL,
                                 min=1, max= 300, initial=10)
-        BotonPlot = wx.Button(self.pnl,self.ID_PLOT, label='Graficar' )
-        TextGrado = wx.StaticText(self.pnl, label='Grado del Polinomio')
+        BotonPlot = wx.Button(pnlAjuste,self.ID_PLOT, label='Graficar' )
+        TextGrado = wx.StaticText(pnlAjuste, label='Grado del Polinomio')
         TextGrado.SetForegroundColour(wx.WHITE)
-        self.IntGrado = wx.SpinCtrl(self.pnl, wx.SP_ARROW_KEYS|wx.ALIGN_CENTER_HORIZONTAL,
+        self.IntGrado = wx.SpinCtrl(pnlAjuste, wx.SP_ARROW_KEYS|wx.ALIGN_CENTER_HORIZONTAL,
                                 min=1, max=3, initial=1)
-        BotonFit = wx.Button(self.pnl,self.ID_FIT, label='Ajustar' )
+        BotonFit = wx.Button(pnlAjuste,self.ID_FIT, label='Ajustar' )
 
         #ajustamos todo dentro del panel de configuración
         pnlAjuste_sizer.Add(TextFilas, flag=wx.ALL|wx.CENTRE, border=5)

@@ -3,10 +3,10 @@
 
 a = Analysis(
     ['GUI_ODR.py'],
-    pathex=[],
+    pathex=['/home/rlh/Escritorio/Dist_ODR/V1.2 Linux'],
     binaries=[],
     datas=[
-            ('odr_app_INTRO.png','.'),
+        ('odr_app_INTRO.png','.'),
         ('odr_app_logo16.png','.'),
         ('odr_app_logo24.png','.'),
         ('odr_app_logo32.png','.'),
@@ -16,6 +16,7 @@ a = Analysis(
         ('odr_app_logo96.png','.'),
         ('odr_app_logo128.png','.'),
         ('odr_app_logo256.png','.'),
+        ('odr_app_logo.ico','.'),
     ],
     hiddenimports=[],
     hookspath=[],
@@ -36,7 +37,7 @@ exe = EXE(
     name='GUI_ODR',
     debug=False,
     bootloader_ignore_signals=False,
-    strip=False,
+    strip=True,
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
