@@ -21,50 +21,33 @@ El método de *Orthogonal Distance Regresion*(ODR)[^1], busca optimizar la dista
 ## Algoritmo
 El algoritmo de ODR[^2] busca, como todos los demás, ajustar una función matemática ($f$) a un grupo de $n$ puntos experimentales $\{x_{i}, y_{i}\}$, de manera que:
 
-$$
-y_{i}=f(x_{i}, \beta) 
-\tag{1}
-$$
+$$y_{i}=f(x_{i}, \beta) \tag{1}$$
 
 donde $f$ es una función (no necesariamente lineal) con $\beta$ un vector de parámetros. 
 
 En este caso, tanto $x_i$ como $y_i$ presentan *errores* aditivos no conocidos $\delta_{i}$ y $\epsilon_i$ respectivamente, por lo que la función de ajuste se convierte en:
 
-$$
-y_i = f(x_i+\delta_i, \beta)-\epsilon_i
-\tag{2}
-$$
+$$y_i = f(x_i+\delta_i, \beta)-\epsilon_i \tag{2}$$
 
 Para optimizar $\beta$ se selecciona la suma cuadrática de las distancias ortogonales de los puntos experimentales a la curva $f$. Esta distancia queda determinada por $r_{i}^{2} = \delta_{i}^{2} +\epsilon_{i}^{2}$.
 
 De manera que la función a minimizar sería:
 
-$$
-\min_{\beta, \epsilon, \delta}\sum_{i=1}^{n} r^{2}_i = \min_{\beta, \epsilon, \delta}\sum_{i=1}^{n} (\epsilon_{i}^{2} +\delta_{i}^{2})
-\tag{3}
-$$
+$$\min_{\beta, \epsilon, \delta}\sum_{i=1}^{n} r^{2}_i = \min_{\beta, \epsilon, \delta}\sum_{i=1}^{n} (\epsilon_{i}^{2} +\delta_{i}^{2}) \tag{3}$$
 
 El valor de $\epsilon_{i}$ se puede despejar de la ecuación (2), así que se puede reescribir la ecuación (3) como:
 
-$$
-\min_{\beta, \delta}\sum_{i=1}^{n} \left[ \left(f(x_i+\delta_i,\beta)-y_i \right)^{2} + \delta_i ²  \right] \tag{4}
-$$
+$$\min_{\beta, \delta}\sum_{i=1}^{n} \left[ \left(f(x_i+\delta_i,\beta)-y_i \right)^{2} + \delta_i ²  \right] \tag{4}$$
 
 siendo esta la función a optimizar para este método ODR para un grupo de puntos $\{x_i, y_i\}$ con errores no conocidos aditivos $\{\delta_i, \epsilon_i\}$. Se puede hacer una generalización de esta función al pensar que $x_i \in \mathbb{R}^m$, por lo que sus errores también son un vector.
 
-$$
-\min_{\beta, \delta}\sum_{i=1}^{n} \left[ \left(f(x_i+\delta_i,\beta)-y_i \right)^{2} + \delta_i^{T} \delta _i  \right]
-\tag{5}
-$$
+$$\min_{\beta, \delta}\sum_{i=1}^{n} \left[ \left(f(x_i+\delta_i,\beta)-y_i \right)^{2} + \delta_i^{T} \delta _i  \right] \tag{5}$$
 
 donde, $\delta_{i}^{T}$ es el vector transpuesto de los *errores*.
 
 Por ultimo se hace una segunda generalización al introducir funciones de peso $w_i$ y $D_i$ para cada uno de los puntos de manera que todo queda como:
 
-$$
-\min_{\beta, \delta}\sum_{i=1}^{n} w^2 \left[ \left(f(x_i+\delta_i,\beta)-y_i \right)^{2} + \delta_i^{T} D_{i}^2 \delta _i  \right]
-\tag{6}
-$$
+$$\min_{\beta, \delta}\sum_{i=1}^{n} w^2 \left[ \left(f(x_i+\delta_i,\beta)-y_i \right)^{2} + \delta_i^{T} D_{i}^2 \delta _i  \right] \tag{6}$$
 
 Este es el caso más general y la función de optimzación para el método ODR, aunque aplicando las funciones de peso a la ecuación (5) es una forma de verlo para muchos ajustes *simples*. La relación entre las funciones de peso y las incertidumbres son $w_i = \frac{1}{\mu_{y_i}}$ y $D_i = \frac{\mu_{x_i}}{\mu_{y_i}}$ (?).
 
