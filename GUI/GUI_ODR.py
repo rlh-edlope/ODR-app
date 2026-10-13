@@ -585,11 +585,16 @@ class ODR_app(wx.Frame):
         TextFilas.SetForegroundColour(wx.WHITE)
         self.IntFilas = wx.SpinCtrl(pnlAjuste, style= wx.SP_ARROW_KEYS|wx.TE_PROCESS_ENTER|wx.ALIGN_CENTER_HORIZONTAL,
                                 min=1, max= 300, initial=10)
+        if system() == 'Windows':
+            self.IntFilas.SetForegroundColour(wx.BLACK)
+
         BotonPlot = wx.Button(pnlAjuste,self.ID_PLOT, label='Graficar' )
         TextGrado = wx.StaticText(pnlAjuste, label='Grado del Polinomio')
         TextGrado.SetForegroundColour(wx.WHITE)
         self.IntGrado = wx.SpinCtrl(pnlAjuste, wx.SP_ARROW_KEYS|wx.ALIGN_CENTER_HORIZONTAL,
                                 min=1, max=3, initial=1)
+        if system() == 'Windows':
+            self.IntGrado.SetForegroundColour(wx.BLACK)
         BotonFit = wx.Button(pnlAjuste,self.ID_FIT, label='Ajustar' )
 
         #ajustamos todo dentro del panel de configuración

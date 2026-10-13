@@ -20,12 +20,15 @@ El método de *Orthogonal Distance Regresion*(ODR)[^1], busca optimizar la dista
 
 ## Algoritmo
 El algoritmo de ODR[^2] busca, como todos los demás, ajustar una función matemática ($f$) a un grupo de $n$ puntos experimentales $\{x_{i}, y_{i}\}$, de manera que:
+
 $$
 y_{i}=f(x_{i}, \beta) \tag{1}
 $$
+
 donde $f$ es una función (no necesariamente lineal) con $\beta$ un vector de parámetros. 
 
 En este caso, tanto $x_i$ como $y_i$ presentan *errores* aditivos no conocidos $\delta_{i}$ y $\epsilon_i$ respectivamente, por lo que la función de ajuste se convierte en:
+
 $$
 y_i = f(x_i+\delta_i, \beta)-\epsilon_i \tag{2}
 $$
@@ -33,11 +36,13 @@ $$
 Para optimizar $\beta$ se selecciona la suma cuadrática de las distancias ortogonales de los puntos experimentales a la curva $f$. Esta distancia queda determinada por $r_{i}^{2} = \delta_{i}^{2} +\epsilon_{i}^{2}$.
 
 De manera que la función a minimizar sería:
+
 $$
 \min_{\beta, \epsilon, \delta}\sum_{i=1}^{n} r^{2}_i = \min_{\beta, \epsilon, \delta}\sum_{i=1}^{n} (\epsilon_{i}^{2} +\delta_{i}^{2}) \tag{3}
 $$
 
 El valor de $\epsilon_{i}$ se puede despejar de la ecuación (2), así que se puede reescribir la ecuación (3) como:
+
 $$
 \min_{\beta, \delta}\sum_{i=1}^{n} \left[ \left(f(x_i+\delta_i,\beta)-y_i \right)^{2} + \delta_i ²  \right] \tag{4}
 $$
