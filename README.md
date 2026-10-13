@@ -21,7 +21,9 @@ El método de *Orthogonal Distance Regresion*(ODR)[^1], busca optimizar la dista
 ## Algoritmo
 El algoritmo de ODR[^2] busca, como todos los demás, ajustar una función matemática ($f$) a un grupo de $n$ puntos experimentales $\{x_{i}, y_{i}\}$, de manera que:
 
-$$y_{i}=f(x_{i}, \beta) \tag{1}$$
+```math
+y_{i}=f(x_{i}, \beta) \tag{1}
+```
 
 donde $f$ es una función (no necesariamente lineal) con $\beta$ un vector de parámetros. 
 
